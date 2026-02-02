@@ -11,8 +11,7 @@
    functions to decipher categorical codes. After that, pivot tables
    were created to calculate the average check and the percentage of
    defaulted loans by housing conditions and professions.
- #### Result: 
- <i> An analytical report has been generated that identifies the highest-risk segments of borrowers (for example, young people with education loans), which allows for optimizing credit policy. </i>
+
  ### Short work progress
 This dataset was downloaded in the .data extension, so to work with it efficiently, it was first converted to a tabular format and headers were added. This was implemented using Python:
 
@@ -59,3 +58,7 @@ The second step is to decode the data in Excel using XLOOKUP, and select only th
 
 As a result, pivot tables were created showing the calculation of the average check and the percentage of defaulted loans by housing conditions and jobs.
 <img width="956" height="508" alt="image" src="https://github.com/user-attachments/assets/0df5210b-657b-4f74-94a9-800a07906fb5" />
+
+
+ #### Result: 
+ <i> An analytical report has been generated that identifies the highest-risk segments of borrowers (for example, young people with education loans), which allows for optimizing credit policy. </i>
