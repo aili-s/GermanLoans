@@ -57,3 +57,33 @@ GROUP BY Purpose
 ORDER BY AVG(Amount) DESC
 LIMIT 3; 
 
+
+-- top-3 loans by purpose
+WITH BigLoan AS (
+SELECT Purpose, Amount, ROW_NUMBER() OVER (PARTITION by Purpose Order by Amount desc) as BigCredit
+FROM 'german_credit_cleaned.csv' )
+
+SELECT Purpose, Amount
+FROM BigLoan
+WHERE BigCredit <= 3
+ORDER BY Purpose, Amount DESC;
+
+-- Bad Borrower With AVG savings
+SELECT CreditRisk, COUNT(CASE
+	            WHEN Savings = 'A63' AND CreditRisk = 'Bad' THEN 1
+	            ELSE 0
+	         END) as BadBorrowerWithAVGsavings
+FROM 'german_credit_cleaned.csv'
+Group by CreditRisk
+Order by CreditRisk
+Limit 1;
+
+--Duration and Risky jobs
+SELECT ROUND(AVG(Duration), 0), Job, 
+	COUNT(CASE
+	    WHEN CreditRisk = 'Bad' THEN 1
+	    ELSE 0
+	END) as Bad_j
+FROM 'german_credit_cleaned.csv'
+Group By Job
+Having COUNT(*) >30 ;
